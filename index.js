@@ -16,9 +16,9 @@ $(".btn").click(function(){
 
 $(".btn-start").click(function(){
     if(!started){
-        nextSequence();
         //update the h1 with change in the value of level.
         $("#level-title").text("Level "+ level);
+        nextSequence();
         started = true;
     }
 });
@@ -56,7 +56,6 @@ function checkAnswer(currentLevel){
             setTimeout(function(){
                 nextSequence();
             }, 1000);
-            userClickedPattern =[];
         }
     }else{
         console.log("wrong");
@@ -72,8 +71,6 @@ function checkAnswer(currentLevel){
         //3. Change the h1 title to say "Game Over, Press Any Key to Restart" if the user got the answer wrong.
         $("#level-title").text("Game Over, Refresh the page to restart");
         $(".btn-start").addClass("invisible");
-        
-        startOver();
     }
 }
 
@@ -88,10 +85,4 @@ function animatePress(currentColour){
     setTimeout(function(){
         $("."+currentColour).removeClass("pressed");
     },100);
-}
-
-function startOver(){
-    level =0;
-    gamePattern =[];
-    started = false;
 }
